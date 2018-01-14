@@ -50,6 +50,10 @@ export class InputNumber extends base.Component<InputNumberOptions> {
   constructor(root: Element, options: InputNumberOptions) {
     super(root, options);
 
+    if (this.options.rootSelector && this.root.querySelector(this.options.rootSelector)) {
+      console.warn(`Unsupported nesting detected for selector: ${this.options.rootSelector}`, this.root);
+    }
+
     this._disableButtons = base.checkBinaryOptionAttr(this.root, this.options.disableButtonsAttr,
         this.options.disableButtons || true);
 
